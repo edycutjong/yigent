@@ -1,5 +1,8 @@
 "use client";
 
+import { StatusBar } from "@/components/StatusBar";
+import { Footer } from "@/components/Footer";
+
 import React, { useState, useEffect } from 'react';
 import { eitherwayService } from '@/lib/eitherway';
 
@@ -45,6 +48,8 @@ export default function Home() {
   };
 
   return (
+    <>
+      <StatusBar />
     <main className="min-h-screen flex flex-col bg-slate-950">
       {/* Top Status Bar */}
       <header className="border-b border-slate-800 bg-slate-900/50 backdrop-blur-sm p-3 flex justify-between items-center px-6">
@@ -203,5 +208,7 @@ export default function Home() {
         </form>
       </div>
     </main>
+      <Footer />
+    </>
   );
 }

@@ -2,6 +2,7 @@
 
 import { StatusBar } from "@/components/StatusBar";
 import { Footer } from "@/components/Footer";
+import { WalletConnect } from "@/components/WalletConnect";
 
 import React, { useState, useEffect } from 'react';
 import { eitherwayService } from '@/lib/eitherway';
@@ -124,9 +125,7 @@ export default function Home() {
                   <div className="text-slate-400 font-mono text-sm mb-6 text-center">
                     Swap 50 USDC for ~0.2714 SOL and deposit into Kamino JitoSOL-SOL Vault.
                   </div>
-                  <button className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold py-3 px-8 rounded-lg transition-colors shadow-[0_0_15px_rgba(6,182,212,0.5)]">
-                    Approve & Sign Transaction
-                  </button>
+                  <WalletConnect />
                 </div>
               )}
 

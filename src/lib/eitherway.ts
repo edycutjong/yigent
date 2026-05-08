@@ -1,42 +1,51 @@
+import { AIIntentParser } from './ai-intent';
+import { QuicknodeClient } from './quicknode';
+import { BirdeyeClient } from './birdeye';
+import { DFlowClient } from './dflow';
+import { KaminoClient } from './kamino';
+
 export class EitherwayService {
-  private apiUrl: string;
+  private aiParser: AIIntentParser;
+  private quicknode: QuicknodeClient;
+  private birdeye: BirdeyeClient;
+  private dflow: DFlowClient;
+  private kamino: KaminoClient;
   private initialized = false;
 
   constructor() {
-    this.apiUrl = process.env.NEXT_PUBLIC_EITHERWAY_API_URL || "http://localhost:3001/api";
+    this.aiParser = new AIIntentParser();
+    this.quicknode = new QuicknodeClient();
+    this.birdeye = new BirdeyeClient();
+    this.dflow = new DFlowClient();
+    this.kamino = new KaminoClient();
   }
 
   init() {
     if (this.initialized) return;
-    console.log("[Eitherway SDK] Initializing Intent Engine");
+    console.log("[Eitherway SDK] Initializing Intent Engine & Partner SDKs");
     this.initialized = true;
   }
 
-  async parseIntent(intent: string): Promise<{ action: string, input: string, target: string, strategy: string, plan: string }> {
+  async parseIntent(intent: string) {
     this.init();
     console.log(`[Eitherway SDK] Analyzing intent: ${intent}`);
-    
-    try {
-      const response = await fetch(`${this.apiUrl}/parse`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ intent })
-      });
-      if (!response.ok) throw new Error("Backend offline");
-      return await response.json();
-    } catch (e) {
-      console.warn("[Eitherway SDK] Node backend unreachable, falling back to local simulation");
-      // Simulate AI parsing and pathfinding
-      await new Promise(res => setTimeout(res, 800));
-      
-      return {
-        action: "SWAP_AND_STAKE",
-        input: "50 USDC",
-        target: "SOL",
-        strategy: "Lowest Risk Yield",
-        plan: `> Analyzing intent...\n> Identified action: SWAP_AND_STAKE\n> Input: 50 USDC\n> Target Asset: SOL\n> Target Strategy: Lowest Risk Yield`
-      };
-    }
+    return await this.aiParser.parse(intent);
+  }
+  
+  async getQuicknodeBlockhash() {
+    return await this.quicknode.getLatestBlockhash();
+  }
+
+  async getBirdeyePrice(token: string) {
+    return await this.birdeye.getPrice(token);
+  }
+
+  async getDFlowRoute(amount: number, inToken: string, outToken: string) {
+    return await this.dflow.getOptimalRoute(amount, inToken, outToken);
+  }
+
+  async getKaminoVault(asset: string) {
+    return await this.kamino.getHighestApyVault(asset);
   }
 }
 

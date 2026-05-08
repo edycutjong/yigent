@@ -31,7 +31,20 @@ Natural language DeFi terminal using ALL 5 Eitherway partners. Type intent → g
 ## 🏗️ Architecture & Tech Stack
 We built the frontend using **Next.js 16** and **Tailwind CSS v4**.
 
-*(Check the architecture directory for detailed system diagrams)*
+
+```mermaid
+graph TD
+    A[User Intent] -->|Parse| B[OpenAI API]
+    B -->|Structured Action| C(Yigent Engine)
+    
+    C -->|Fetch Price| D[Birdeye API]
+    C -->|Route Swap| E[DFlow Router]
+    C -->|Find Yield| F[Kamino Vaults]
+    
+    C -->|Build TX| G[QuickNode RPC]
+    G -->|Sign & Execute| H[Solflare Wallet]
+```
+
 See the [Architecture Document](docs/ARCHITECTURE.md) and [Product Requirements Document](docs/PRD.md) for full system specifications.
 
 ## 🏆 Sponsor Tracks Targeted

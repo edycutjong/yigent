@@ -1,11 +1,12 @@
 <div align="center">
   <h1>Yigent 🚀</h1>
-  <p><em>AI Intent-to-DeFi Terminal. Natural language DeFi terminal using ALL 5 Eitherway partners.</em></p>
+  > <p><em>AI Intent-to-DeFi Terminal. Natural language DeFi terminal using ALL 5 Eitherway partners.</em></p>
+
   <img src="docs/readme-hero.png" alt="Yigent Hero" width="100%">
   
   <br/>
   
-  [![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen.svg)](https://eitherway.vercel.app)
+  [![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen.svg)](https://yigent.edycu.dev)
   [![Pitch Video](https://img.shields.io/badge/Pitch-Video-red.svg)](https://youtube.com/your-video)
   [![Superteam Frontier](https://img.shields.io/badge/Superteam-Frontier_Hackathon-1E40AF?style=flat&logo=solana&logoColor=white)](https://superteam.fun/earn/listing/build-a-live-dapp-with-solflare-kamino-dflow-or-quicknode-with-eitherway-app)
 

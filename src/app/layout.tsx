@@ -17,12 +17,11 @@ export const metadata: Metadata = {
   description: "AI-powered intent-to-DeFi terminal powered by Birdeye, DFlow, Kamino, Solflare, and Quicknode.",
   icons: {
     icon: "/icon.svg",
-    apple: "/icon.svg",
   },
   openGraph: {
     title: "Yigent - Intent-to-DeFi Terminal",
     description: "AI-powered intent-to-DeFi terminal powered by Birdeye, DFlow, Kamino, Solflare, and Quicknode.",
-    url: "https://eitherway.vercel.app",
+    url: "https://yigent.edycu.dev",
     siteName: "Yigent",
     images: [
       {

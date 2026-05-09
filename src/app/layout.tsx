@@ -19,6 +19,28 @@ export const metadata: Metadata = {
     icon: "/icon.svg",
     apple: "/icon.svg",
   },
+  openGraph: {
+    title: "Yigent - Intent-to-DeFi Terminal",
+    description: "AI-powered intent-to-DeFi terminal powered by Birdeye, DFlow, Kamino, Solflare, and Quicknode.",
+    url: "https://eitherway.vercel.app",
+    siteName: "Yigent",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Yigent App Demo",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Yigent - Intent-to-DeFi Terminal",
+    description: "AI-powered intent-to-DeFi terminal powered by Birdeye, DFlow, Kamino, Solflare, and Quicknode.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({

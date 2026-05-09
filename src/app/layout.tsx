@@ -15,6 +15,10 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Yigent - Intent-to-DeFi Terminal",
   description: "AI-powered intent-to-DeFi terminal powered by Birdeye, DFlow, Kamino, Solflare, and Quicknode.",
+  icons: {
+    icon: "/icon.svg",
+    apple: "/icon.svg",
+  },
 };
 
 export default function RootLayout({

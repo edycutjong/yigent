@@ -20,7 +20,8 @@ export default defineConfig({
       exclude: [
         'src/**/*.d.ts',
         'src/app/layout.tsx',
-        'src/components/TechStack.tsx'
+        'src/components/TechStack.tsx',
+        'src/app/apple-icon.tsx'
       ]
     },
   },

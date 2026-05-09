@@ -7,7 +7,7 @@
   
   [![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen.svg)](https://eitherway.vercel.app)
   [![Pitch Video](https://img.shields.io/badge/Pitch-Video-red.svg)](https://youtube.com/your-video)
-  [![Superteam Frontier](https://img.shields.io/badge/Superteam-Frontier_Hackathon-1E40AF?style=flat&logo=solana&logoColor=white)](https://superteam.fun/earn/listing/eitherway-or-frontier-data-sidetrack)
+  [![Superteam Frontier](https://img.shields.io/badge/Superteam-Frontier_Hackathon-1E40AF?style=flat&logo=solana&logoColor=white)](https://superteam.fun/earn/listing/build-a-live-dapp-with-solflare-kamino-dflow-or-quicknode-with-eitherway-app)
 
   <br/>
 
@@ -63,7 +63,7 @@ For a detailed breakdown of our system architecture and data flow, please refer 
 
 ## 🚀 Run it Locally (For Judges)
 
-1. **Clone the repo:** `git clone https://github.com/edycutjong/frontier-eitherway.git`
+1. **Clone the repo:** `git clone https://github.com/edycutjong/yigent.git`
 2. **Install dependencies:** `npm install`
 3. **Set up environment variables:**
    ```bash

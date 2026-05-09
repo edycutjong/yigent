@@ -16,22 +16,22 @@ describe('QuicknodeClient', () => {
 
   it('should fetch latest blockhash', async () => {
     const client = new QuicknodeClient();
-    (global.fetch as any).mockResolvedValue({
+    vi.mocked(global.fetch).mockResolvedValue({
       json: vi.fn().mockResolvedValue({ result: { value: { blockhash: 'fetched_blockhash' } } })
-    });
+    } as unknown as Response);
     expect(await client.getLatestBlockhash()).toBe('fetched_blockhash');
   });
 
   it('should return mock blockhash if fetch fails', async () => {
     const client = new QuicknodeClient();
-    (global.fetch as any).mockRejectedValue(new Error('Network error'));
+    vi.mocked(global.fetch).mockRejectedValue(new Error('Network error'));
     expect(await client.getLatestBlockhash()).toBe('mock_blockhash_123456789');
   });
   
   it('should use NEXT_PUBLIC_QUICKNODE_RPC from env', async () => {
     process.env.NEXT_PUBLIC_QUICKNODE_RPC = "https://custom.rpc";
     const client = new QuicknodeClient();
-    (global.fetch as any).mockRejectedValue(new Error('Network error'));
+    vi.mocked(global.fetch).mockRejectedValue(new Error('Network error'));
     await client.getLatestBlockhash();
     expect(global.fetch).toHaveBeenCalledWith('https://custom.rpc', expect.any(Object));
   });

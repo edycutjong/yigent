@@ -24,15 +24,16 @@ export default function Home() {
 
   const sampleIntent = "Put 50 USDC into the safest SOL yield";
 
-  const executeIntent = async (e?: React.FormEvent) => {
+  const executeIntent = async (e?: React.FormEvent, overrideIntent?: string) => {
     if (e) e.preventDefault();
-    if (!intent) return;
+    const targetIntent = overrideIntent || intent;
+    if (!targetIntent) return;
 
     setStage('parsing');
     setPlanText('');
     
     let currentText = '';
-    const parsed = await eitherwayService.parseIntent(intent);
+    const parsed = await eitherwayService.parseIntent(targetIntent);
     const fullText = parsed.plan;
     
     let i = 0;
@@ -198,7 +199,10 @@ export default function Home() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   transition={{ delay: 0.5 }}
-                  onClick={() => setIntent(sampleIntent)}
+                  onClick={() => {
+                    setIntent(sampleIntent);
+                    executeIntent(undefined, sampleIntent);
+                  }}
                   className="group relative inline-flex items-center gap-2 px-8 py-4 bg-slate-900 border border-slate-700 hover:border-cyan-500/50 rounded-2xl font-mono text-sm text-slate-300 hover:text-cyan-400 transition-all shadow-xl overflow-hidden"
                 >
                   <div className="absolute inset-0 bg-linear-to-r from-cyan-500/10 to-purple-500/10 translate-y-full group-hover:translate-y-[0%] transition-transform duration-300" />

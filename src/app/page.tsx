@@ -4,8 +4,10 @@ import { StatusBar } from "@/components/StatusBar";
 import { Footer } from "@/components/Footer";
 import { WalletConnect } from "@/components/WalletConnect";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { eitherwayService } from '@/lib/eitherway';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Sparkles, TerminalSquare, Zap, Activity, Bot, ArrowRight } from 'lucide-react';
 
 const PARTNERS = [
   { id: 'quicknode', name: 'Quicknode', status: 'connected' },
@@ -82,7 +84,7 @@ export default function Home() {
 
               {(stage === 'fetching' || stage === 'routing' || stage === 'yielding' || stage === 'ready') && (
                 <div className="animate-in fade-in slide-in-from-left-4 duration-500 bg-slate-900/80 backdrop-blur border border-cyan-500/30 p-6 rounded-xl flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center border border-cyan-500/50 flex-shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center border border-cyan-500/50 shrink-0">
                     B
                   </div>
                   <div className="flex-1">
@@ -95,7 +97,7 @@ export default function Home() {
 
               {(stage === 'routing' || stage === 'yielding' || stage === 'ready') && (
                 <div className="animate-in fade-in slide-in-from-left-4 duration-500 bg-slate-900/80 backdrop-blur border border-purple-500/30 p-6 rounded-xl flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center border border-purple-500/50 flex-shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center border border-purple-500/50 shrink-0">
                     D
                   </div>
                   <div className="flex-1">
@@ -108,7 +110,7 @@ export default function Home() {
 
               {(stage === 'yielding' || stage === 'ready') && (
                 <div className="animate-in fade-in slide-in-from-left-4 duration-500 bg-slate-900/80 backdrop-blur border border-green-500/30 p-6 rounded-xl flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center border border-green-500/50 flex-shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center border border-green-500/50 shrink-0">
                     K
                   </div>
                   <div className="flex-1">
@@ -120,7 +122,7 @@ export default function Home() {
               )}
 
               {stage === 'ready' && (
-                <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 bg-gradient-to-r from-slate-900 to-slate-800 border-2 border-cyan-500 p-8 rounded-xl flex flex-col items-center justify-center mt-12 shadow-[0_0_30px_rgba(6,182,212,0.2)]">
+                <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 bg-linear-to-r from-slate-900 to-slate-800 border-2 border-cyan-500 p-8 rounded-xl flex flex-col items-center justify-center mt-12 shadow-[0_0_30px_rgba(6,182,212,0.2)]">
                   <div className="text-white font-bold text-xl mb-2">Ready to Execute via Solflare</div>
                   <div className="text-slate-400 font-mono text-sm mb-6 text-center">
                     Swap 50 USDC for ~0.2714 SOL and deposit into Kamino JitoSOL-SOL Vault.
@@ -131,30 +133,88 @@ export default function Home() {
 
             </div>
           )}
-          {stage === 'idle' && (
-             <div className="h-full flex flex-col items-center justify-center text-center max-w-lg mx-auto">
-                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-cyan-500 to-purple-600 mb-6 flex items-center justify-center opacity-80">
-                  <span className="text-4xl">🤖</span>
-                </div>
-                <h1 className="text-3xl font-bold text-white mb-4">Command DeFi with English.</h1>
-                <p className="text-slate-400 mb-8">
-                  Yigent maps your intent, finds the best prices, routes the swap, and allocates yield across 5 protocols automatically.
-                </p>
-                <button 
-                  onClick={() => setIntent(sampleIntent)}
-                  className="text-xs font-mono bg-slate-900 border border-slate-800 text-cyan-400 px-4 py-2 rounded hover:bg-slate-800 transition-colors"
+          <AnimatePresence mode="wait">
+            {stage === 'idle' && (
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
+                transition={{ duration: 0.5 }}
+                className="h-full flex flex-col items-center justify-center text-center max-w-3xl mx-auto w-full px-4"
+              >
+                <motion.div 
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.1, type: "spring", stiffness: 200, damping: 20 }}
+                  className="relative group mb-8"
                 >
-                  Try: "{sampleIntent}"
-                </button>
-             </div>
-          )}
+                  <div className="absolute inset-0 bg-linear-to-br from-cyan-500 to-purple-600 rounded-3xl blur-xl opacity-40 group-hover:opacity-60 transition-opacity duration-500" />
+                  <div className="relative w-24 h-24 rounded-3xl bg-slate-900/80 backdrop-blur-xl border border-white/10 flex items-center justify-center shadow-2xl">
+                    <Bot className="w-12 h-12 text-cyan-400" />
+                    <Sparkles className="absolute -top-2 -right-2 w-6 h-6 text-purple-400 animate-pulse" />
+                  </div>
+                </motion.div>
+
+                <motion.h1 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-linear-to-br from-white via-slate-200 to-slate-500 mb-6 tracking-tight"
+                >
+                  Command DeFi <br className="hidden md:block" />
+                  <span className="bg-clip-text bg-linear-to-r from-cyan-400 to-purple-500">with English.</span>
+                </motion.h1>
+
+                <motion.p 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="text-lg text-slate-400 mb-10 max-w-xl mx-auto leading-relaxed"
+                >
+                  Yigent maps your intent, finds the best prices, routes the swap, and allocates yield across 5 protocols automatically. Zero clicks required.
+                </motion.p>
+
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full mb-10"
+                >
+                  {[
+                    { icon: Zap, text: "Instant Execution", color: "text-cyan-400" },
+                    { icon: TerminalSquare, text: "Natural Language", color: "text-purple-400" },
+                    { icon: Activity, text: "Best Yields", color: "text-green-400" }
+                  ].map((feature, i) => (
+                    <div key={i} className="flex flex-col items-center p-4 rounded-2xl bg-white/5 border border-white/5 backdrop-blur-sm">
+                      <feature.icon className={`w-6 h-6 mb-2 ${feature.color}`} />
+                      <span className="text-sm font-medium text-slate-300">{feature.text}</span>
+                    </div>
+                  ))}
+                </motion.div>
+
+                <motion.button 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ delay: 0.5 }}
+                  onClick={() => setIntent(sampleIntent)}
+                  className="group relative inline-flex items-center gap-2 px-8 py-4 bg-slate-900 border border-slate-700 hover:border-cyan-500/50 rounded-2xl font-mono text-sm text-slate-300 hover:text-cyan-400 transition-all shadow-xl overflow-hidden"
+                >
+                  <div className="absolute inset-0 bg-linear-to-r from-cyan-500/10 to-purple-500/10 translate-y-full group-hover:translate-y-[0%] transition-transform duration-300" />
+                  <span className="relative">Try: &quot;{sampleIntent}&quot;</span>
+                  <ArrowRight className="w-4 h-4 relative group-hover:translate-x-1 transition-transform" />
+                </motion.button>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         {/* Execution Timeline (Right) */}
         <div className="w-80 border-l border-slate-800 bg-slate-900/30 p-6 font-mono text-xs hidden lg:block">
           <div className="text-slate-500 mb-6">EXECUTION_TIMELINE</div>
           
-          <div className="space-y-6 relative before:absolute before:inset-0 before:ml-[11px] before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-800 before:to-transparent">
+          <div className="space-y-6 relative before:absolute before:inset-0 before:ml-[11px] before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-linear-to-b before:from-transparent before:via-slate-800 before:to-transparent">
             {['Parsing Intent', 'QuickNode RPC', 'Birdeye Price', 'DFlow Route', 'Kamino Vault', 'Solflare Sign'].map((step, idx) => {
                let stepStatus = 'pending';
                if (stage === 'ready') stepStatus = 'done';

@@ -1,5 +1,5 @@
 export class DFlowClient {
-  async getOptimalRoute(inputAmount: number, inputToken: string, outputToken: string): Promise<any> {
+  async getOptimalRoute(inputAmount: number, inputToken: string, outputToken: string): Promise<{ inAmount: number, outAmount: number, slippageBps: number, route: string[] }> {
     console.log(`[DFlow] Fetching route for ${inputAmount} ${inputToken} to ${outputToken}`);
     // Simulate DFlow routing engine
     await new Promise(res => setTimeout(res, 200));

@@ -18,7 +18,7 @@ export class BirdeyeClient {
       });
       const data = await response.json();
       return data.data.value;
-    } catch (e) {
+    } catch {
       console.warn("[Birdeye] API fetch failed, simulating price");
       return 184.22;
     }

@@ -19,7 +19,7 @@ export class QuicknodeClient {
       });
       const data = await response.json();
       return data.result.value.blockhash;
-    } catch (e) {
+    } catch {
       console.warn("[Quicknode] RPC unreachable, using mock blockhash");
       return "mock_blockhash_123456789";
     }

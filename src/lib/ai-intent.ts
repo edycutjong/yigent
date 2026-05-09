@@ -5,7 +5,8 @@ export class AIIntentParser {
     this.apiKey = process.env.OPENAI_API_KEY || "";
   }
 
-  async parse(intent: string): Promise<{ action: string, input: string, target: string, strategy: string, plan: string }> {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async parse(_intent: string): Promise<{ action: string, input: string, target: string, strategy: string, plan: string }> {
     if (!this.apiKey) {
       console.warn("[AI Intent] No OpenAI API key, using simulated parse");
       await new Promise(res => setTimeout(res, 800));

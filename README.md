@@ -1,6 +1,6 @@
 <div align="center">
   <h1>Yigent 🚀</h1>
-  > <p><em>AI Intent-to-DeFi Terminal. Natural language DeFi terminal using ALL 5 Eitherway partners.</em></p>
+  <p><em>AI Intent-to-DeFi Terminal. Natural language DeFi terminal using ALL 5 Eitherway partners.</em></p>
 
   <img src="docs/readme-hero.png" alt="Yigent Hero" width="100%">
   

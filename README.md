@@ -18,7 +18,7 @@
   ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)
   ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)
   ![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat&logo=openai&logoColor=white)
-  ![Vitest](https://img.shields.io/badge/Vitest-FCC72B?style=flat&logo=vitest&logoColor=white)
+  [![Yigent CI](https://github.com/edycutjong/yigent/actions/workflows/ci.yml/badge.svg)](https://github.com/edycutjong/yigent/actions/workflows/ci.yml)
 </div>
 
 ---

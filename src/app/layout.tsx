@@ -13,6 +13,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://yigent.edycu.dev"),
   title: "Yigent - Intent-to-DeFi Terminal",
   description: "AI-powered intent-to-DeFi terminal powered by Birdeye, DFlow, Kamino, Solflare, and Quicknode.",
   icons: {
